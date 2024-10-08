@@ -11,7 +11,7 @@ import { priceSchema, Schema } from '~/utils/rules'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { NoUndefinedField } from '~/types/utils.type'
 import RatingStars from '../RatingStars'
-import { omit } from 'lodash'
+import  omit from 'lodash/omit'
 
 interface Props {
     queryConfig: QueryConfig

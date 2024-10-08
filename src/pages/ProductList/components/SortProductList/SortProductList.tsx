@@ -1,6 +1,6 @@
 import { createSearchParams, useNavigate, Link } from 'react-router-dom'
 import classNames from 'classnames'
-import { omit } from 'lodash'
+import  omit  from 'lodash/omit'
 
 import { path } from '~/constants/path'
 import { ProductListConfig } from '~/types/product.type'
