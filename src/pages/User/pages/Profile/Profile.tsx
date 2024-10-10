@@ -208,7 +208,7 @@ export default function Profile() {
                     <div className='flex flex-col items-center'>
                         <div className='my-5 h-24 w-24'>
                             <img
-                                src={previewImage || getAvatarUrl(profile?.avatar as string)}
+                                src={previewImage || getAvatarUrl(profile?.avatar as string)} // fix lỗi không có ảnh mặc định khi chưa chọn file
                                 alt=''
                                 className='h-full w-full rounded-full object-cover'
                             />
