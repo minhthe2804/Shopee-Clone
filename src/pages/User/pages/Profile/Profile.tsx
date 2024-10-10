@@ -54,7 +54,7 @@ export default function Profile() {
         formState: { errors },
         setValue,
         setError,
-        watch,
+        watch
     } = useForm<FormUserData>({
         defaultValues: {
             name: '',
@@ -208,7 +208,7 @@ export default function Profile() {
                     <div className='flex flex-col items-center'>
                         <div className='my-5 h-24 w-24'>
                             <img
-                                src={previewImage || getAvatarUrl(avatar as string)}
+                                src={previewImage || getAvatarUrl(profile?.avatar as string)}
                                 alt=''
                                 className='h-full w-full rounded-full object-cover'
                             />
