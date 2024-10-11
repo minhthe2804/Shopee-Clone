@@ -16,6 +16,7 @@ import userImage from '~/assets/images/user-image.jpg'
 import { getAvatarUrl, isAxiosUnprocessableEntityError } from '~/utils/utils'
 import { ErrorResponse } from '~/types/utils.type'
 import InputFile from '~/components/InputFile'
+import { Helmet } from 'react-helmet-async'
 
 type FormUserData = Pick<UserSchema, 'name' | 'address' | 'phone' | 'date_of_birth' | 'avatar'>
 type FormUserDataError = Omit<FormUserData, 'date_of_birth'> & {
@@ -124,6 +125,10 @@ export default function Profile() {
 
     return (
         <div className='rounded-sm bg-white px-2 pb-10 shadow md:px-7 md:pb-20'>
+            <Helmet>
+                <title>Hồ sơ || Shopee Clone</title>
+                <meta name='description' content='Hồ sơ cá nhân dự án Shopee Clone' />
+            </Helmet>
             <div className='border-b border-b-gray-200 py-6'>
                 <h1 className='text-lg font-medium capitalize text-gray-900'>Hồ Sơ Của Tôi</h1>
                 <div className='mt-1 text-sm text-gray-700'>Quản lý thông tin hồ sơ để bảo mật tài khoản</div>

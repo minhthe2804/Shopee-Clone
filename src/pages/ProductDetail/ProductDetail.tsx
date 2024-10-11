@@ -3,6 +3,9 @@ import DOMPurify from 'dompurify'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { path } from '~/constants/path'
+import { Helmet } from 'react-helmet-async'
+import { convert } from 'html-to-text'
 
 import productApi from '~/apis/product.api'
 import ProductRating from '~/components/ProductRating'
@@ -13,7 +16,6 @@ import QuantityController from '~/components/QuantityController'
 import purchaseApi from '~/apis/purchase.api'
 import { purchasesStatus } from '~/constants/purchase'
 import { toast } from 'react-toastify'
-import { path } from '~/constants/path'
 
 export default function ProductDetail() {
     const { t } = useTranslation('productDetail')
@@ -126,6 +128,18 @@ export default function ProductDetail() {
     if (!product) return null
     return (
         <div className='bg-gray-200 py-6'>
+            <Helmet>
+                <title>{product.name} || Shopee Clone</title>
+                <meta
+                    name='description'
+                    content={convert(product.description, {
+                        limits: {
+                            ellipsis: '...',
+                            maxInputLength: 150
+                        }
+                    })}
+                />
+            </Helmet>
             <div className='container'>
                 <div className='bg-white p-4 shadow'>
                     <div className='grid grid-cols-12 gap-9'>
