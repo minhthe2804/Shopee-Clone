@@ -1,0 +1,11 @@
+{
+    "sort product list": {
+        "sortBy": "Sắp xếp theo",
+        "popular": "Phổ biến",
+        "latest": "Mới nhất",
+        "bestSeller": "Bán chạy",
+        "price": "Giá",
+        "desc": "Giá: Thấp đến cao",
+        "asc": "Giá: Cao đến thấp"
+    }
+}

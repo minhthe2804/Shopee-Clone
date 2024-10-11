@@ -30,9 +30,9 @@ export class Http {
             baseURL: config.baseUrl,
             timeout: 10000,
             headers: {
-                'Content-Type': 'application/json',
-                'expire-access-token': 5, // 10 giây
-                'expire-refresh-token': 60 * 60 // 1 giờ
+                'Content-Type': 'application/json'
+                // 'expire-access-token': 5, // 10 giây
+                // 'expire-refresh-token': 60 * 60 // 1 giờ
             }
         })
         this.instance.interceptors.request.use(

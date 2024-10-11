@@ -1,0 +1,13 @@
+{
+    "sort product list": {
+        "sortBy": "Sort By",
+        "popular": "Popular",
+        "latest": "Latest",
+        "bestSeller": "Best Seller",
+        "price": "Price",
+        "desc": "Price: Descending to ascending",
+        "asc": "Price: Ascending to Descending"
+    }
+}
+
+

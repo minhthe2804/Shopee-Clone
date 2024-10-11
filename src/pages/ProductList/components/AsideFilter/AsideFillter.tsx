@@ -11,8 +11,8 @@ import { priceSchema, Schema } from '~/utils/rules'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { NoUndefinedField } from '~/types/utils.type'
 import RatingStars from '../RatingStars'
-import  omit from 'lodash/omit'
-
+import omit from 'lodash/omit'
+import { useTranslation } from 'react-i18next'
 interface Props {
     queryConfig: QueryConfig
     categories: Category[]
@@ -28,7 +28,7 @@ type FormData = NoUndefinedField<Pick<Schema, 'price_max' | 'price_min'>>
 
 export default function AsideFilter({ categories, queryConfig }: Props) {
     const { category } = queryConfig
-
+    const { t } = useTranslation('home')
     const {
         control,
         handleSubmit,
@@ -84,12 +84,20 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
                         </g>
                     </g>
                 </svg>
-                Tất cả danh mục
+                {t('aside filter.all categories')}
             </Link>
             <div className='my-4 h-[1px] bg-gray-300' />
             <ul>
-                {categories.map((categoryItem) => {
+                {categories.map((categoryItem, index) => {
                     const isAcitve = category === categoryItem._id
+                    let changeCategories = ''
+                    if (index === 0) {
+                        changeCategories = 'aside filter.watch'
+                    } else if (index === 1) {
+                        changeCategories = 'aside filter.tShirt'
+                    } else {
+                        changeCategories = 'aside filter.phone'
+                    }
                     return (
                         <li className='py-2 pl-2' key={categoryItem._id}>
                             <Link
@@ -109,7 +117,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
                                         <polygon points='4 3.5 0 0 0 7' />
                                     </svg>
                                 )}
-                                {categoryItem.name}
+                                {t(changeCategories)}
                             </Link>
                         </li>
                     )
@@ -133,11 +141,11 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
                         />
                     </g>
                 </svg>
-                Bộ lọc tìm kiếm
+                {t('aside filter.filter search')}
             </Link>
             <div className='my-4 h-[1px] bg-gray-300' />
             <div className='my-5'>
-                <div className=''>Khoảng giá</div>
+                <div className=''>{t('aside filter.priceRange')}</div>
                 <form className='mt-2' onSubmit={onSubmit}>
                     <div className='flex items-start'>
                         <Controller
@@ -203,7 +211,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
                 </form>
             </div>
             <div className='my-4 h-[1px] bg-gray-300' />
-            <div className='text-sm'>Đánh giá</div>
+            <div className='text-sm'>{t('aside filter.evaluate')}</div>
             <RatingStars queryConfig={queryConfig} />
             <div className='my-4 h-[1px] bg-gray-300' />
             <Button

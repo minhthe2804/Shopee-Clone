@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import DOMPurify from 'dompurify'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import productApi from '~/apis/product.api'
 import ProductRating from '~/components/ProductRating'
@@ -15,6 +16,7 @@ import { toast } from 'react-toastify'
 import { path } from '~/constants/path'
 
 export default function ProductDetail() {
+    const { t } = useTranslation('productDetail')
     const [buyCount, setByCount] = useState(1)
     const queryClient = useQueryClient()
     const { nameId } = useParams()
@@ -235,7 +237,9 @@ export default function ProductDetail() {
                                     value={buyCount}
                                     max={product.quantity}
                                 />
-                                <div className='ml-6 text-sm text-gray-500'>{product.quantity} sản phẩm có sẵn</div>
+                                <div className='ml-6 text-sm text-gray-500'>
+                                    {product.quantity} {t('available')}
+                                </div>
                             </div>
                             <div className='mt-8 flex items-center'>
                                 <button
