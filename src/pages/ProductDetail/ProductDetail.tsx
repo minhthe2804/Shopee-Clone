@@ -129,7 +129,7 @@ export default function ProductDetail() {
     return (
         <div className='bg-gray-200 py-6'>
             <Helmet>
-                <title>{product.name} || Shopee Clone</title>
+                <title>{product.name} | Shopee Clone</title>
                 <meta
                     name='description'
                     content={convert(product.description, {

@@ -61,7 +61,7 @@ export default function ChangePassword() {
     return (
         <div className='rounded-sm bg-white px-2 pb-10 shadow md:px-7 md:pb-20'>
             <Helmet>
-                <title>Đổi mật khẩu || Shopee Clone</title>
+                <title>Đổi mật khẩu | Shopee Clone</title>
                 <meta name='description' content='Đổi mật khẩu dự án Shopee Clone' />
             </Helmet>
             <div className='border-b border-b-gray-200 py-6'>

@@ -164,7 +164,7 @@ export default function Cart() {
     return (
         <div className='bg-neutral-100 py-16'>
             <Helmet>
-                <title>Giỏ hàng || Shopee Clone</title>
+                <title>Giỏ hàng | Shopee Clone</title>
                 <meta name='description' content='Giỏ hàng dự án Shopee Clone' />
             </Helmet>
             <div className='container'>

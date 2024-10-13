@@ -50,7 +50,7 @@ export default function HistoryPurchase() {
     return (
         <div>
             <Helmet>
-                <title>Đơn mua || Shopee Clone</title>
+                <title>Đơn mua | Shopee Clone</title>
                 <meta name='description' content='Đơn mua dự án Shopee Clone' />
             </Helmet>
             <div className='overflow-x-auto'>
