@@ -1,30 +1,30 @@
 import { InputHTMLAttributes, useState } from 'react'
-import type { RegisterOptions, UseFormRegister } from 'react-hook-form'
+import type { RegisterOptions, UseFormRegister, FieldValues, FieldPath } from 'react-hook-form'
 import { useMatch } from 'react-router-dom'
 
 import { path } from '~/constants/path'
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps<TFieldValues extends FieldValues> extends InputHTMLAttributes<HTMLInputElement> {
     classNameInput?: string
     classNameError?: string
     classNameEye?: string
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    register?: UseFormRegister<any>
+    register?: UseFormRegister<TFieldValues>
     errorMessage?: string
-    rules?: RegisterOptions
+    rules?: RegisterOptions<TFieldValues>
+    name: FieldPath<TFieldValues>
 }
 
-export default function Input({
+export default function Input<TFieldValues extends FieldValues>({
     className,
     register,
     errorMessage,
-    name,
     rules,
+    name,
     classNameInput = 'p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm placeholder:text-base',
     classNameError = 'mt-1 text-red-600 min-h-[1.25rem] text-sm',
     classNameEye = 'absolute top-[8px] right-[5px] h-5 w-5 cursor-pointer',
     ...rest
-}: InputProps) {
+}: InputProps<TFieldValues>) {
     const registerMatch = useMatch(path.changePassword)
     // eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
     const [openEye, setOpenEye] = useState<Boolean>(false)
