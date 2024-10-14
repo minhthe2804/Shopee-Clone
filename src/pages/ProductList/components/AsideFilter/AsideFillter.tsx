@@ -92,9 +92,9 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
                     const isAcitve = category === categoryItem._id
                     let changeCategories = ''
                     if (index === 0) {
-                        changeCategories = 'aside filter.watch'
-                    } else if (index === 1) {
                         changeCategories = 'aside filter.tShirt'
+                    } else if (index === 1) {
+                        changeCategories = 'aside filter.watch'
                     } else {
                         changeCategories = 'aside filter.phone'
                     }
