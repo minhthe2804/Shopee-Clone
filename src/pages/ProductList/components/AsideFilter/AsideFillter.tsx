@@ -33,7 +33,8 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
         control,
         handleSubmit,
         trigger,
-        formState: { errors }
+        formState: { errors },
+        reset
     } = useForm<FormData>({
         defaultValues: {
             price_min: '',
@@ -55,6 +56,7 @@ export default function AsideFilter({ categories, queryConfig }: Props) {
     })
 
     const handleRemoveAll = () => {
+        reset()
         navigate({
             pathname: path.home,
             search: createSearchParams(
