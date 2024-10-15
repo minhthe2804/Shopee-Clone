@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios'
-import HttpStatusCode from '~/constants/httpStatusCode.emum'
 
+import HttpStatusCode from '~/constants/httpStatusCode.emum'
 import config from '~/constants/config'
 import userImage from '~/assets/images/user-image.jpg'
 import { ErrorResponse } from '~/types/utils.type'

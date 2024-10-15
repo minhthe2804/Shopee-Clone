@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
+import { Helmet } from 'react-helmet-async'
 
 import { loginSchema, Schema } from '~/utils/rules'
 import authApi from '~/apis/auth.api'
@@ -14,7 +15,6 @@ import { AppContext } from '~/contexts/app.context'
 import Button from '~/components/Button'
 import { AuthResponse } from '~/types/auth.type'
 import { path } from '~/constants/path'
-import { Helmet } from 'react-helmet-async'
 
 type FormData = Pick<Schema, 'email' | 'password'>
 export default function Login() {

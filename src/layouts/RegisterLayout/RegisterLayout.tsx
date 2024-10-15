@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom'
 import Footer from '~/components/Footer'
 import RegisterHeader from '~/components/RegisterHeader'
 
@@ -9,6 +10,7 @@ function RegisterLayout({ children }: Props) {
         <div>
             <RegisterHeader />
             {children}
+            <Outlet/>
             <Footer />
         </div>
     )

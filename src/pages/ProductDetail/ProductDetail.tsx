@@ -47,6 +47,7 @@ export default function ProductDetail() {
     const addToCartMutation = useMutation({
         mutationFn: (body: { product_id: string; buy_count: number }) => purchaseApi.addToCart(body)
     })
+
     const navigate = useNavigate()
     useEffect(() => {
         if (product && product.images.length > 0) {
@@ -134,8 +135,7 @@ export default function ProductDetail() {
                     name='description'
                     content={convert(product.description, {
                         limits: {
-                            ellipsis: '...',
-                            maxInputLength: 150
+                            ellipsis: '...'
                         }
                     })}
                 />

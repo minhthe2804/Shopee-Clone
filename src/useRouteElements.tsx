@@ -42,27 +42,6 @@ function RejectedRoute() {
 export default function useRouteElements() {
     const routeElements = useRoutes([
         {
-            path: path.home,
-            index: true,
-            element: (
-                <MainLayout>
-                    <Suspense>
-                        <ProductList />
-                    </Suspense>
-                </MainLayout>
-            )
-        },
-        {
-            path: path.productDetail,
-            element: (
-                <MainLayout>
-                    <Suspense>
-                        <ProductDetail />
-                    </Suspense>
-                </MainLayout>
-            )
-        },
-        {
             path: '',
             element: <ProtectedRoute />,
             children: [
@@ -78,35 +57,62 @@ export default function useRouteElements() {
                 },
                 {
                     path: path.user,
-                    element: (
-                        <MainLayout>
-                            <Suspense>
-                                <UserLayout />
-                            </Suspense>
-                        </MainLayout>
-                    ),
+                    element: <MainLayout />,
                     children: [
                         {
-                            path: path.profile,
+                            path: '',
+                            element: <UserLayout />,
+                            children: [
+                                {
+                                    path: path.profile,
+                                    element: (
+                                        <Suspense>
+                                            <Profile />
+                                        </Suspense>
+                                    )
+                                },
+                                {
+                                    path: path.changePassword,
+                                    element: (
+                                        <Suspense>
+                                            <ChangePassword />
+                                        </Suspense>
+                                    )
+                                },
+                                {
+                                    path: path.historyPurchase,
+                                    element: (
+                                        <Suspense>
+                                            <HistoryPurchase />
+                                        </Suspense>
+                                    )
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            element: <RejectedRoute />,
+            children: [
+                {
+                    path: '',
+                    element: <RegisterLayout />,
+                    children: [
+                        {
+                            path: path.login,
                             element: (
                                 <Suspense>
-                                    <Profile />
+                                    <Login />
                                 </Suspense>
                             )
                         },
                         {
-                            path: path.changePassword,
+                            path: path.register,
                             element: (
                                 <Suspense>
-                                    <ChangePassword />
-                                </Suspense>
-                            )
-                        },
-                        {
-                            path: path.historyPurchase,
-                            element: (
-                                <Suspense>
-                                    <HistoryPurchase />
+                                    <Register />
                                 </Suspense>
                             )
                         }
@@ -116,40 +122,66 @@ export default function useRouteElements() {
         },
         {
             path: '',
-            element: <RejectedRoute />,
+            element: <MainLayout />,
             children: [
                 {
-                    path: path.login,
+                    path: path.productDetail,
                     element: (
-                        <RegisterLayout>
-                            <Suspense>
-                                <Login />
-                            </Suspense>
-                        </RegisterLayout>
+                        <Suspense>
+                            <ProductDetail />
+                        </Suspense>
                     )
                 },
                 {
-                    path: path.register,
+                    path: '',
+                    index: true,
                     element: (
-                        <RegisterLayout>
-                            <Suspense>
-                                <Register />
-                            </Suspense>
-                        </RegisterLayout>
+                        <Suspense>
+                            <ProductList />
+                        </Suspense>
+                    )
+                },
+                {
+                    path: '*',
+                    element: (
+                        <Suspense>
+                            <NotFound />
+                        </Suspense>
                     )
                 }
             ]
-        },
-        {
-            path: '*',
-            element: (
-                <MainLayout>
-                    <Suspense>
-                        <NotFound />
-                    </Suspense>
-                </MainLayout>
-            )
         }
+        // {
+        //     path: path.home,
+        //     index: true,
+        //     element: (
+        //         <MainLayout>
+        //             <Suspense>
+        //                 <ProductList />
+        //             </Suspense>
+        //         </MainLayout>
+        //     )
+        // },
+        // {
+        //     path: path.productDetail,
+        //     element: (
+        //         <MainLayout>
+        //             <Suspense>
+        //                 <ProductDetail />
+        //             </Suspense>
+        //         </MainLayout>
+        //     )
+        // },
+        // {
+        //     path: '*',
+        //     element: (
+        //         <MainLayout>
+        //             <Suspense>
+        //                 <NotFound />
+        //             </Suspense>
+        //         </MainLayout>
+        //     )
+        // }
     ])
 
     return routeElements
